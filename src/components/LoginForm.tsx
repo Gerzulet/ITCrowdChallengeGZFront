@@ -1,10 +1,27 @@
-import React from 'react'
+
+import { Bebas_Neue, Montserrat } from "next/font/google"
+
+
+const montserrat = Montserrat({
+  weight: "400",
+  style: 'normal',
+  subsets: ['latin']
+})
+
+const bebas_neue = Bebas_Neue({
+  weight: "400",
+  style: 'normal',
+  subsets: ['latin']
+}
+)
+
 
 export const LoginForm = () => {
   return (
-    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+    <div className=" border-2 border-black md:w-[50%]  max-w-sm ">
+      <h2 className={`ml-24 mt-4 text-2xl ${bebas_neue.className}`}>Continue your ride with us.</h2>
       <div className="card-body">
-        <div className="form-control">
+        <div className={`form-control ${montserrat.className}`}>
           <label className="label">
             <span className="label-text">Email</span>
           </label>
