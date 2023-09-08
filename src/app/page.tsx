@@ -4,7 +4,10 @@ export default function Home() {
   return (
 
     <>
-      <Main />
+      <div className="overflow-x-scroll">
+
+        <Main />
+      </div>
     </>
   )
 }

@@ -12,11 +12,11 @@ const bebas_neue = Bebas_Neue({
   subsets: ['latin']
 }
 )
-
+// Next time export fonts
 
 const Hero = () => {
   return (
-    <div className="hero  mt-10 md:mt-2 md:h-[24rem] md:w-[50%] border-2 border-black ">
+    <div className="hero  mt-10 md:mt-2 md:h-[24rem] ">
       <div className="ml-4 hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <h1 className={`${bebas_neue.className} text-5xl  md:text-[6rem]  font-bold `}>Let us <span className="text-[#EAC7C7] font-semibold"> guide</span> you</h1>
