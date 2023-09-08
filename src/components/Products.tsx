@@ -1,7 +1,7 @@
 
 const Products = () => {
   return (
-    <div className="text-[24rem]  md:w-auto ml-48 md:ml-0 mt-10 md:mt-2 border-2 border-red-800   ">
+    <div className="text-[24rem]  md:w-auto ml-48 md:ml-0 mt-10 md:mt-2 ">
       <div className="hero  w-[24rem] md:w-auto mt-10 md:mt-2 ">
         <div className="ml-4 hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
