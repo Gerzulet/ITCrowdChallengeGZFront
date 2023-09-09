@@ -1,7 +1,23 @@
+
+import { Bebas_Neue } from "next/font/google"
+const bebas_neue = Bebas_Neue({
+  weight: "400",
+  style: 'normal',
+  subsets: ['latin']
+}
+)
+
 const Products = () => {
   return (
 
     <div className="text-[24rem] overflow-y-scroll h-[50rem] md:w-[58rem] ml-48 md:ml-0 mt-10 md:mt-2">
+      <div className="w-full flex justify-center">
+        <p className={` ${bebas_neue.className} font-semibold text-[40px]`}>
+          Take a look at our products
+
+        </p>
+
+      </div>
       <div className="grid grid-cols-3 gap-2">
         <div className="transform p-4 hover:scale-110 transition-transform ease-in-out duration-300 col-span-3 md:col-span-1 md:row-span-2">
           <img
