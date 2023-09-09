@@ -10,7 +10,6 @@ const Main = () => {
         <Hero />
         <LoginForm />
       </div>
-
       <Products />
 
 

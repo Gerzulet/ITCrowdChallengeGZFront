@@ -1,15 +1,74 @@
-
 const Products = () => {
   return (
-    <div className="text-[24rem]  md:w-auto ml-48 md:ml-0 mt-10 md:mt-2 ">
-      <div className="hero  w-[24rem] md:w-auto mt-10 md:mt-2 ">
-        <div className="ml-4 hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className={`text-5xl  md:text-[6rem]  font-bold `}>Let us <span className="text-[#EAC7C7] font-semibold"> guide</span> you</h1>
-            <p className={` mt-5 text-lg md:text-[18px]`}>We are a group of people obsessed with <span className=" font-bold text-blue-400"> helping</span> people choose the <span className="font-bold "> best quality,</span> with the <span className="font-bold">best prices,</span>  maintaining our commitment with the <span className="font-bold">environment</span>.</p> </div>
+
+    <div className="text-[24rem] overflow-y-scroll h-[50rem] md:w-[58rem] ml-48 md:ml-0 mt-10 md:mt-2">
+      <div className="grid grid-cols-3 gap-2">
+        <div className="col-span-3 md:col-span-1 md:row-span-2">
+          <img
+            className="h-auto"
+            src="https://img.freepik.com/foto-gratis/vista-posterior-sudadera-capucha-ropa-hombres_53876-97228.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph"
+            alt=""
+          />
+        </div>
+        <div className="col-span-3 md:col-span-1 md:row-span-2">
+          <img
+            className="h-48"
+            src="https://img.freepik.com/foto-gratis/concepto-maqueta-camisa-ropa-sencilla_23-2149448792.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph"
+            alt=""
+          />
+        </div>
+        <div className="col-span-3 md:col-span-1">
+          <img
+            className="h-28"
+            src="https://img.freepik.com/foto-gratis/hombre-sueter-negro-sombrero-cubo-negro-sesion-ropa-juvenil_53876-102294.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph"
+            alt=""
+          />
+        </div>
+        <div className="col-span-3 md:col-span-1">
+          <img
+            className="h-54"
+            src="https://img.freepik.com/foto-gratis/hermosa-mujer-gorra-beisbol-sesion-estudio-moda-diadema_53876-102175.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph"
+            alt=""
+          />
+        </div>
+        <div className="col-span-3 md:col-span-1">
+          <img
+            className="h-32"
+            src="https://img.freepik.com/foto-gratis/vista-posterior-sudadera-capucha-ropa-hombres_53876-97228.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph"
+            alt=""
+          />
+        </div>
+        <div className="col-span-3 md:col-span-2">
+          <img
+            className="h-62"
+            src="https://img.freepik.com/psd-premium/mockup-camiseta-hombre-psd-ropa-logo-verano_53876-141828.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph"
+            alt=""
+          />
+        </div>
+        <div className="col-span-3 md:col-span-1">
+          <img
+            className="h-48"
+            src="https://img.freepik.com/foto-gratis/vista-posterior-sudadera-capucha-ropa-hombres_53876-97228.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph"
+            alt=""
+          />
+        </div>
+        <div className="col-span-3 md:col-span-2">
+          <img
+            className="h-92"
+            src="https://img.freepik.com/foto-gratis/hombre-afroamericano-camiseta-negra-al-aire-libre_53876-97162.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph"
+            alt=""
+          />
+        </div>
+        <div className="col-span-3 md:col-span-1">
+          <img
+            className="h-60"
+            src="https://img.freepik.com/psd-premium/maqueta-camiseta-negra-hombre-psd-modelo-tatuado_53876-150796.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph"
+            alt=""
+          />
         </div>
       </div>
     </div>
+
 
   )
 }
