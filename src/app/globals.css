@@ -17,4 +17,25 @@
 }
 
 
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: #EAE0DA;
+}
+  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #EAE0DA;
+    border-radius: 5px;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #A0C3D2;
+}
+
 
