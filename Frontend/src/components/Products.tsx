@@ -15,7 +15,7 @@ const Products = () => {
   return (
 
 
-    <div id="item1" className=" text-[24rem] overflow-y-auto  2xl:h-screen 2xl:m-0 h-[50rem] md:w-[58rem] ml-18 md:ml-0 mt-10 md:mt-2">
+    <div id="item1" className=" text-[24rem] overflow-y-auto 2xl:h-screen 2xl:m-0 h-[50rem] md:w-[58rem] ml-18 md:ml-0 mt-10 md:mt-2">
       <div className="w-full  flex flex-col z-30 items-center justify-center">
         <p className={` ${bebas_neue.className} font-semibold text-[40px]`}>
           Take a look at our products
