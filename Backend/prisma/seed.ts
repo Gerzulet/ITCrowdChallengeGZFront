@@ -1,56 +1,80 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client';
 import { faker } from '@faker-js/faker'
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 async function main() {
 
-  const mockupData = [ // todo exportar esto de otra parte
-    'https://img.freepik.com/foto-gratis/vista-posterior-sudadera-capucha-ropa-hombres_53876-97228.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph',
-    'https://img.freepik.com/foto-gratis/vista-posterior-sudadera-capucha-ropa-hombres_53876-97228.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph',
-    'https://img.freepik.com/foto-gratis/concepto-maqueta-camisa-ropa-sencilla_23-2149448792.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph',
-    'https://img.freepik.com/psd-premium/mockup-camiseta-hombre-psd-ropa-logo-verano_53876-141828.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph',
-    'https://img.freepik.com/foto-gratis/hombre-afroamericano-camiseta-negra-al-aire-libre_53876-97162.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph',
-    'https://img.freepik.com/foto-gratis/hombre-afroamericano-camiseta-negra-al-aire-libre_53876-97162.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph',
-    'https://img.freepik.com/foto-gratis/retrato-adulto-joven-maqueta-sudadera-capucha_23-2149296353.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph',
-    'https://img.freepik.com/foto-gratis/jovenes-maqueta-sudadera-capucha_23-2149246223.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph',
-    'https://img.freepik.com/psd-gratis/camiseta-maqueta-diseno_15879-478.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph',
-    'https://img.freepik.com/foto-gratis/concepto-maqueta-camisa-ropa-sencilla_23-2149448791.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph',
-    'https://img.freepik.com/foto-gratis/mujer-camisa-blanca-pantalon-espacio-diseno-ropa-casual-moda-f_53876-125227.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph',
-    'https://img.freepik.com/psd-gratis/chico-joven-posando-camiseta-colorida-gorra_23-2147653516.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph',
-    'https://img.freepik.com/vector-gratis/sudaderas-capucha-realistas-maquetas-sudaderas-capucha-color-verde-ilustracion-vectorial-aislada_1284-80112.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph',
-    'https://img.freepik.com/foto-gratis/feliz-hermosa-joven-ropa-deportiva-pie-calle-sosteniendo-cafe-moda-femenina-estilo-vida-ciudad_132075-9166.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph'
+
+  const brand1Products = [
+    "https://img.freepik.com/foto-gratis/vista-posterior-sudadera-capucha-ropa-hombres_53876-97228.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph",
+    "https://img.freepik.com/foto-gratis/concepto-maqueta-camisa-ropa-sencilla_23-2149448792.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph",
+    "https://img.freepik.com/foto-gratis/hombre-sueter-negro-sombrero-cubo-negro-sesion-ropa-juvenil_53876-102294.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph",
+    "https://img.freepik.com/foto-gratis/hermosa-mujer-gorra-beisbol-sesion-estudio-moda-diadema_53876-102175.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph",
+    "https://img.freepik.com/foto-gratis/vista-posterior-sudadera-capucha-ropa-hombres_53876-97228.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph",
+    "https://img.freepik.com/psd-premium/mockup-camiseta-hombre-psd-ropa-logo-verano_53876-141828.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph",
   ]
 
-  mockupData.forEach(async (el) => {
+  const brand2Products = [
+    "https://img.freepik.com/foto-gratis/vista-posterior-sudadera-capucha-ropa-hombres_53876-97228.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph",
+    "https://img.freepik.com/foto-gratis/hombre-afroamericano-camiseta-negra-al-aire-libre_53876-97162.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph",
+    "https://img.freepik.com/psd-premium/maqueta-camiseta-negra-hombre-psd-modelo-tatuado_53876-150796.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph",
+    "https://img.freepik.com/foto-gratis/vista-posterior-sudadera-capucha-ropa-hombres_53876-97228.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph",
+    "https://img.freepik.com/foto-gratis/hombre-afroamericano-camiseta-negra-al-aire-libre_53876-97162.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph",
+    "https://img.freepik.com/psd-premium/maqueta-camiseta-negra-hombre-psd-modelo-tatuado_53876-150796.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph"
+
+  ]
+
+  // Crear marcas
+  const brand1 = await prisma.brand.create({
+    data: {
+      name: 'Starlight',
+      logo_url: 'https://img.freepik.com/vector-gratis/plantilla-logotipo-empresa-moda-diseno-marca-vector-blanco-negro_53876-156444.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=ais',
+    },
+  });
+
+  const brand2 = await prisma.brand.create({
+    data: {
+      name: 'Fashion',
+      logo_url: 'https://img.freepik.com/vector-gratis/diseno-logo-tienda-ropa-dibujado-mano_23-2149499592.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=ais',
+    },
+  });
+
+  for (let index = 0; index < brand1Products.length; index++) {
     await prisma.product.create({
       data: {
         name: faker.lorem.words({ min: 1, max: 3 }),
-        description: faker.lorem.sentences(4),
-        image_url: el,
-        price: faker.number.int({ min: 10, max: 100 }),
-        brand: {
-          create: {
-            name: 'Starlight',
-            logo_url: 'https://img.freepik.com/vector-gratis/plantilla-logotipo-empresa-moda-diseno-marca-vector-blanco-negro_53876-156444.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=ais',
-          },
-        },
+        description: faker.lorem.sentences(2),
+        image_url: brand1Products[index],
+        price: faker.number.int({ min: 4000, max: 50000 }),
+        brandId: brand1.id,
       },
-    })
+    });
 
 
+  }
+  for (let index = 0; index < brand2Products.length; index++) {
+    await prisma.product.create({
+      data: {
+        name: faker.lorem.words({ min: 1, max: 3 }),
+        description: faker.lorem.sentences(2),
+        image_url: brand2Products[index],
+        price: faker.number.int({ min: 4000, max: 50000 }),
+        brandId: brand2.id,
+      },
+    });
 
-  })
+
+  }
 
 
-
-
+  console.log('Data seeded successfully.');
 }
 
 main()
-  .catch(async (e) => {
-    console.error(e)
+  .catch((error) => {
+    console.error('Error seeding data:', error);
   })
   .finally(async () => {
-    await prisma.$disconnect()
-  })
+    await prisma.$disconnect();
+  });
