@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client'
+import { faker } from '@faker-js/faker'
 
 const prisma = new PrismaClient()
 
@@ -24,10 +25,10 @@ async function main() {
   mockupData.forEach(async (el) => {
     await prisma.product.create({
       data: {
-        name: 'Black t-shirt',
-        description: 'Elevate your wardrobe with our Black T-Shirt collection. Timeless, versatile, and effortlessly stylish. Perfect for any occasion.',
+        name: faker.lorem.words({ min: 1, max: 3 }),
+        description: faker.lorem.sentences(4),
         image_url: el,
-        price: 14999,
+        price: faker.number.int({ min: 10, max: 100 }),
         brand: {
           create: {
             name: 'Starlight',
@@ -40,26 +41,6 @@ async function main() {
 
 
   })
-
-
-
-
-  const product6 = await prisma.product.create({
-    data: {
-      name: 'Black t-shirt',
-      description: 'Elevate your wardrobe with our Black T-Shirt collection. Timeless, versatile, and effortlessly stylish. Perfect for any occasion.',
-      image_url: 'https://img.freepik.com/foto-gratis/hombre-afroamericano-camiseta-negra-al-aire-libre_53876-97162.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph',
-      price: 14999,
-      brand: {
-        create: {
-          name: 'Starlight',
-          logo_url: 'https://img.freepik.com/vector-gratis/plantilla-logotipo-empresa-moda-diseno-marca-vector-blanco-negro_53876-156444.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=ais',
-        },
-      },
-    },
-  })
-
-
 
 
 
