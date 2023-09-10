@@ -16,12 +16,16 @@ export const NavBar = () => {
 
   const [logged, setLogged] = useState(false)
 
+  function goHome() { // Get this files elsewhere in the future
+    document.getElementById("goToMain")?.click()
+  }
+
 
   return (
     <nav>
       <div className="navbar ">
         <div className="flex-1">
-          <a className={`btn btn-ghost ml-4 md:text-5xl font-black normal-case ${bebas_neue.className} text-3xl `}>CrowdClothing</a>
+          <a onClick={goHome} className={`btn btn-ghost ml-4 md:text-5xl font-black normal-case ${bebas_neue.className} text-3xl `}>CrowdClothing</a>
         </div>
         <div className="flex-none">
           <div className="dropdown dropdown-end">
