@@ -1,5 +1,6 @@
 import Hero from "./Hero"
 import { LoginForm } from "./LoginForm"
+import ProductDetails from "./ProductDetails"
 import Products from "./Products"
 
 const Main = () => {
@@ -20,8 +21,8 @@ const Main = () => {
         <div id="products" className="carousel-item w-full md:w-1/2">
           <Products />
         </div>
-        <div id="details" className="carousel-item w-1/2">
-          <Products />
+        <div id="details" className="carousel-item w-full md:w-1/2">
+          <ProductDetails />
         </div>
 
       </div>
