@@ -29,8 +29,8 @@ export const NavBar = () => {
         </div>
         <div className="flex-none">
           <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar mr-2">
+              <div className="w-10 lg:w-[48px]   rounded-full">
                 <img alt="avatar" src="https://img.freepik.com/psd-gratis/3d-ilustracion-persona-gafas-sol_23-2149436180.jpg?w=740&t=st=1694197362~exp=1694197962~hmac=342aa15072cd4ae37141447bfe70c1b9e5ea700aa89085d56576d275098e76f9" />
               </div>
             </label>
