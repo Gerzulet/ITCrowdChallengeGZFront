@@ -19,7 +19,7 @@ const bebas_neue = Bebas_Neue({
 export const LoginForm = () => {
   return (
     <div className="">
-      <h2 className={`ml-16 mt-4 text-2xl ${bebas_neue.className}`}>Continue your ride with us.</h2>
+      <h2 className={`ml-8 mt-4 text-3xl ${bebas_neue.className}`}>Continue your ride with us.</h2>
       <div className="card-body">
         <div className={`form-control ${montserrat.className}`}>
           <label className="label">
