@@ -39,7 +39,7 @@ export class ProductsService {
     })
   }
 
-  update(id: number, updateProductDto: UpdateProductDto) {
+  update(id: string, updateProductDto: UpdateProductDto) {
     return this.prisma.product.update({
       where: {
         id: id,
@@ -50,7 +50,7 @@ export class ProductsService {
     })
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.prisma.product.delete({
       where: {
         id: id,
