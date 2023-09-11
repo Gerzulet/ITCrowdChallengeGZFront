@@ -14,7 +14,7 @@ datasource db {
 }
 
 model Brand {
-  id       Int       @id @default(autoincrement())
+  id       String    @id @default(uuid())
   name     String    @unique
   logo_url String    @unique
   products Product[]
@@ -23,13 +23,13 @@ model Brand {
 }
 
 model Product {
-  id          Int    @id @default(autoincrement())
+  id          String @id @default(uuid())
   name        String @unique
   description String
   image_url   String
   price       Int
   brand       Brand  @relation(fields: [brandId], references: [id])
-  brandId     Int
+  brandId     String
 
   @@schema("products")
 }
