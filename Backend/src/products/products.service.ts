@@ -9,7 +9,16 @@ export class ProductsService {
 
 
   create(createProductDto: CreateProductDto) {
-    return 'This action adds a new product';
+
+    return this.prisma.product.create({
+      data: {
+        name: createProductDto.name,
+        description: createProductDto.description,
+        image_url: createProductDto.image_url,
+        price: createProductDto.price,
+        brandId: createProductDto.brandId
+      }
+    })
   }
 
   findAll() {
