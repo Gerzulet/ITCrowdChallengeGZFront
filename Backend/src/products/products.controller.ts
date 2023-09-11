@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query, UseGuards } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { AuthGuard } from 'src/auth/auth.guard';
 
 @Controller('products')
 export class ProductsController {
@@ -17,6 +18,7 @@ export class ProductsController {
     return this.productsService.findAll();
   }
 
+  @UseGuards(AuthGuard)
   @Get('search')
   findOne(@Query() filter: { name: string, description: string }) {
     return this.productsService.findOne(filter);
