@@ -1,6 +1,7 @@
 "use client"
+import { ProductService } from "@/service/ProductService"
 import { Bebas_Neue } from "next/font/google"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 const bebas_neue = Bebas_Neue({
@@ -11,8 +12,12 @@ const bebas_neue = Bebas_Neue({
 )
 
 
+
 export const NavBar = () => {
 
+  useEffect(() => {
+    ProductService.getProducts().then(data => console.log(data))
+  })
 
   const [logged, setLogged] = useState(false)
 
