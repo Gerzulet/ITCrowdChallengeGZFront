@@ -24,7 +24,7 @@ export const ProductService = {
 
   editProduct: async (pid: string, data: Object): Promise<Object> => {
     return await fetch(`${BASE_URL}/products/${pid}`, {
-      method: "POST",
+      method: "PATCH",
       body: JSON.stringify(data)
     }).then(res => res.json())
   },
