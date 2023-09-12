@@ -1,6 +1,9 @@
 "use client"
 import { Bebas_Neue } from "next/font/google"
 import { goToDetails } from "@/utils/navigation"
+import { useEffect, useState } from "react"
+import { ProductService } from "@/service/ProductService"
+import { Product } from "@/types/product"
 const bebas_neue = Bebas_Neue({
   weight: "400",
   style: 'normal',
@@ -10,8 +13,34 @@ const bebas_neue = Bebas_Neue({
 
 const Products = () => {
 
+  const [products, setProducts] = useState<Product[]>([])
+  const [page, setPage] = useState(1);
 
 
+  function paginateElements(elements: Product[], page: number, elementsPerPage: number) {
+    const start = (page - 1) * elementsPerPage;
+    const end = start + elementsPerPage;
+    return elements.slice(start, end);
+  }
+
+  const listOfProducts = paginateElements(products, page, 9)
+
+  useEffect(() => {
+    ProductService.getProducts().then(data => setProducts(data))
+  })
+
+  const handleClick = (e: any) => {
+    const button = e.target;
+    const activeClass = "btn-active";
+
+    button.parentElement.querySelectorAll(".btn").forEach((btn: any) => {
+      btn.classList.remove(activeClass);
+    });
+
+    button.classList.add(activeClass);
+
+    setPage(button.textContent);
+  };
   return (
 
 
@@ -21,99 +50,28 @@ const Products = () => {
           Take a look at our products
         </p>
         <div className="join">
-          <button className="join-item btn btn-active">1</button>
-          <button className="join-item btn ">2</button>
-          <button className="join-item btn">3</button>
-          <button className="join-item btn">4</button>
+          <button onClick={handleClick} className="join-item btn btn-active ">1</button>
+          <button onClick={handleClick} className="join-item btn ">2</button>
+          <button onClick={handleClick} className="join-item btn ">3</button>
+          <button onClick={handleClick} className="join-item btn ">4</button>
+
         </div>
 
       </div>
       <div className="grid md:grid-cols-3 mt-4 gap-2">
-        <div className="transform p-4 hover:scale-110 transition-transform ease-in-out duration-300 col-span-3 md:col-span-1">
-          <img
-            onClick={goToDetails}
-            className="h-auto rounded-lg hover:cursor-pointer"
-            src="https://img.freepik.com/foto-gratis/vista-posterior-sudadera-capucha-ropa-hombres_53876-97228.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph"
-            alt=""
-          />
-        </div>
-        <div className="transform p-4 hover:scale-110 transition-transform ease-in-out duration-300  col-span-3 md:col-span-1">
-          <img
-            className="md:h-auto rounded-lg "
-            src="https://img.freepik.com/foto-gratis/concepto-maqueta-camisa-ropa-sencilla_23-2149448792.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph"
-            alt=""
-          />
-        </div>
-        <div className="transform p-4 hover:scale-110 transition-transform ease-in-out duration-300  col-span-3 md:col-span-1">
-          <img
-            className="md:h-auto rounded-lg"
-            src="https://img.freepik.com/foto-gratis/hombre-sueter-negro-sombrero-cubo-negro-sesion-ropa-juvenil_53876-102294.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph"
-            alt=""
-          />
-        </div>
-        <div className="transform p-4 hover:scale-110 transition-transform ease-in-out duration-300 col-span-3 md:col-span-1">
-          <img
-            className="md:h-auto  rounded-lg"
-            src="https://img.freepik.com/foto-gratis/hermosa-mujer-gorra-beisbol-sesion-estudio-moda-diadema_53876-102175.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph"
-            alt=""
-          />
-        </div>
-        <div className="transform p-4 hover:scale-110 transition-transform ease-in-out duration-300 col-span-3 md:col-span-1">
-          <img
-            className="md:h-auto rounded-lg"
-            src="https://img.freepik.com/foto-gratis/vista-posterior-sudadera-capucha-ropa-hombres_53876-97228.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph"
-            alt=""
-          />
-        </div>
-        <div className="transform p-4 hover:scale-110 transition-transform ease-in-out duration-300 col-span-3 md:col-span-1">
-          <img
-            className="md:h-auto rounded-lg"
-            src="https://img.freepik.com/psd-premium/mockup-camiseta-hombre-psd-ropa-logo-verano_53876-141828.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph"
-            alt=""
-          />
-        </div>
-        <div className="transform p-4 hover:scale-110 transition-transform ease-in-out duration-300 col-span-3 md:col-span-1">
-          <img
-            className="md:h-auto rounded-lg"
-            src="https://img.freepik.com/foto-gratis/vista-posterior-sudadera-capucha-ropa-hombres_53876-97228.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph"
-            alt=""
-          />
-        </div>
-        <div className="transform p-4 hover:scale-110 transition-transform ease-in-out duration-300 col-span-3 md:col-span-1">
-          <img
-            className="md:h-auto rounded-lg"
-            src="https://img.freepik.com/foto-gratis/hombre-afroamericano-camiseta-negra-al-aire-libre_53876-97162.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph"
-            alt=""
-          />
-        </div>
-        <div className="transform p-4 hover:scale-110 transition-transform ease-in-out duration-300 col-span-3 md:col-span-1">
-          <img
-            className="md:h-auto rounded-lg"
-            src="https://img.freepik.com/psd-premium/maqueta-camiseta-negra-hombre-psd-modelo-tatuado_53876-150796.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph"
-            alt=""
-          />
-        </div>
-        <div className="transform p-4 hover:scale-110 transition-transform ease-in-out duration-300 col-span-3 md:col-span-1">
-          <img
-            className="md:h-auto rounded-lg"
-            src="https://img.freepik.com/foto-gratis/vista-posterior-sudadera-capucha-ropa-hombres_53876-97228.jpg?size=626&ext=jpg&ga=GA1.1.1442629563.1692141647&semt=sph"
-            alt=""
-          />
-        </div>
-        <div className="transform p-4 hover:scale-110 transition-transform ease-in-out duration-300 col-span-3 md:col-span-1">
-          <img
-            className="md:h-auto rounded-lg"
-            src="https://img.freepik.com/foto-gratis/hombre-afroamericano-camiseta-negra-al-aire-libre_53876-97162.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph"
-            alt=""
-          />
-        </div>
-        <div className="transform p-4 hover:scale-110 transition-transform ease-in-out duration-300 col-span-3 md:col-span-1">
-          <img
-            className="md:h-auto rounded-lg"
-            src="https://img.freepik.com/psd-premium/maqueta-camiseta-negra-hombre-psd-modelo-tatuado_53876-150796.jpg?size=626&ext=jpg&ga=GA1.2.1442629563.1692141647&semt=sph"
-            alt=""
-          />
-        </div>
+        {
+          listOfProducts?.map((product, index) => (
+            <div key={index} className="transform p-4 hover:scale-110 transition-transform ease-in-out duration-300 col-span-3 md:col-span-1">
+              <img
+                onClick={goToDetails}
+                className="h-auto rounded-lg hover:cursor-pointer"
+                src={product.image_url}
+                alt={product.name}
+              />
+            </div>
+
+          ))}
+
       </div>
     </div>
 

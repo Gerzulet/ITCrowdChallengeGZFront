@@ -15,10 +15,6 @@ const bebas_neue = Bebas_Neue({
 
 export const NavBar = () => {
 
-  useEffect(() => {
-    ProductService.getProducts().then(data => console.log(data))
-  })
-
   const [logged, setLogged] = useState(false)
 
   function goHome() { // Get this files elsewhere in the future
