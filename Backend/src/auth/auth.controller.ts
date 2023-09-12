@@ -1,4 +1,4 @@
-import { Res, Body, Controller, Post, HttpCode, HttpStatus, Response } from '@nestjs/common'
+import { Res, Body, Controller, Post, HttpCode, HttpStatus } from '@nestjs/common'
 import { AuthService } from './auth.service';
 
 @Controller('auth')
@@ -10,6 +10,7 @@ export class AuthController {
   async signIn(@Body() signInDto: Record<string, any>, @Res() res: any) {
     const user = await this.authService.signIn(signInDto.username, signInDto.password);
 
+
     res
       .cookie('access_token', user.access_token, {
         httpOnly: true,
@@ -17,7 +18,7 @@ export class AuthController {
         raw: true
 
       })
-      .send({ message: "done" })
+      .send({ message: "Signin Successfull" })
 
   }
 }
