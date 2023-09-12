@@ -1,5 +1,12 @@
+"use client"
+import { useState } from "react"
 
 const ProductDetails = () => {
+
+
+  const [rangeValue, setRangeValue] = useState<any>(25)
+
+
   return (
     <section className="text-gray-600 body-font overflow-hidden 2xl:flex 2xl:flex-col 2xl:justify-center ">
       <div className="container px-5 py-24 mx-auto">
@@ -54,7 +61,7 @@ const ProductDetails = () => {
                 </div>
               </div>
             </div>
-            <input type="range" min={0} max="100" value="25" className="range" step="25" />
+            <input onChange={event => setRangeValue(event.target.value)} type="range" min={0} max="100" value={rangeValue} className="range" step="25" />
             <div className="w-full flex justify-between text-xs px-2">
               <span>SM</span>
               <span>MD</span>

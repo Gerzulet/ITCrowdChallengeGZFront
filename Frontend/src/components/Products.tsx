@@ -4,6 +4,8 @@ import { goToDetails } from "@/utils/navigation"
 import { useEffect, useState } from "react"
 import { ProductService } from "@/service/ProductService"
 import { Product } from "@/types/product"
+
+
 const bebas_neue = Bebas_Neue({
   weight: "400",
   style: 'normal',
