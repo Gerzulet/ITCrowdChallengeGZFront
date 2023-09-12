@@ -10,7 +10,7 @@ datasource db {
   provider          = "postgresql"
   url               = env("DATABASE_URL")
   shadowDatabaseUrl = env("DATABASE_URL")
-  schemas           = ["products"]
+  schemas           = ["products", "users"]
 }
 
 model Brand {
@@ -32,4 +32,13 @@ model Product {
   brandId     String
 
   @@schema("products")
+}
+
+model User {
+  id       String @id @default(uuid())
+  name     String
+  email    String @unique
+  password String
+
+  @@schema("users")
 }

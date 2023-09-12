@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { faker } from '@faker-js/faker'
+import * as bcrypt from 'bcrypt'
 
 const prisma = new PrismaClient();
 
@@ -25,7 +26,6 @@ async function main() {
 
   ]
 
-  // Crear marcas
   const brand1 = await prisma.brand.create({
     data: {
       name: 'Starlight',
@@ -66,6 +66,23 @@ async function main() {
 
 
   }
+
+
+
+  async function hashPassword(password: string) {
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(password, salt);
+    return hashedPassword;
+  }
+
+  const user = await prisma.user.create({
+    data: {
+      name: 'Test Admin',
+      email: 'admin@gmail.com',
+      password: await hashPassword('changedpassword')
+    },
+  });
+
 
 
   console.log('Data seeded successfully.');
