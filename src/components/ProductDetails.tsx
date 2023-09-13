@@ -71,7 +71,7 @@ const ProductDetails = () => {
                 </div>
               </div>
             </div>
-            <input onChange={event => setRangeValue(event.target.value)} type="range" min={0} max="100" value={rangeValue} className="range" step="25" />
+            <input onChange={event => setRangeValue(event.target.value)} type="range" min={0} max={100} value={rangeValue} className="range" step={25} />
             <div className="w-full flex justify-between text-xs px-2">
               <span>SM</span>
               <span>MD</span>
