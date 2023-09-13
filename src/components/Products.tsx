@@ -25,14 +25,16 @@ const Products = () => {
   function paginateElements(elements: Product[], page: number, elementsPerPage: number) {
     const start = (page - 1) * elementsPerPage;
     const end = start + elementsPerPage;
+    if (!elements) return null
     return elements.slice(start, end);
   }
 
   const listOfProducts = paginateElements(products, page, 9)
 
+
   useEffect(() => {
     ProductService.getProducts().then(data => setProducts(data))
-  })
+  }, [])
 
   const handleClick = (e: any) => {
     const button = e.target;
@@ -71,7 +73,7 @@ const Products = () => {
       </div>
       <div className="grid md:grid-cols-3 mt-4 gap-2">
         {
-          listOfProducts?.map((product, index) => (
+          listOfProducts.map((product, index) => (
             <div key={index} className="transform p-4 hover:scale-110 transition-transform ease-in-out duration-300 col-span-3 md:col-span-1">
               <img
                 onClick={() => getDetails(product)}

@@ -2,6 +2,8 @@
 import { Bebas_Neue, Montserrat } from "next/font/google"
 import { UserService } from "@/service/UserService"
 import { useState } from "react"
+import { ProductService } from "@/service/ProductService"
+import { useHeaderStore } from "@/store/useHeader"
 
 
 const montserrat = Montserrat({
@@ -19,14 +21,15 @@ const bebas_neue = Bebas_Neue({
 
 
 
+
+
 export const LoginForm = () => {
   const [username, setUsername] = useState<String>('');
   const [password, setPassword] = useState<String>('');
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
-    await UserService.login({ username, password }).then(data => console.log(data))
-
+    await UserService.login({ username, password }).then(data => useHeaderStore.setState(data.access_token))
   };
 
 

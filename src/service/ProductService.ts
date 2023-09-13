@@ -9,8 +9,12 @@ export const ProductService = {
       .then(res => res.json())
   },
 
-  getProductsByName: async (name: string): Promise<Product[]> => {
-    return await fetch(`${BASE_URL}/products/search?name=${name}`)
+  getProductsByName: async (name: string, header: string): Promise<Product[]> => {
+    return await fetch(`${BASE_URL}/products/search?name=${name}`, {
+      headers: {
+        'authorization': header
+      }
+    })
       .then(res => res.json())
   },
 
