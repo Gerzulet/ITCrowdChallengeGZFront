@@ -1,22 +1,30 @@
 "use client"
 import { useState } from "react"
 import { useProductDetailStore } from "@/store/useProductDetail"
+import { goToProducts } from "@/utils/navigation"
+import { Montserrat } from "next/font/google"
+
+const montserrat = Montserrat({
+  weight: "400",
+  style: 'normal',
+  subsets: ['latin']
+})
+
 
 const ProductDetails = () => {
   const { product } = useProductDetailStore()
-
-
   const [rangeValue, setRangeValue] = useState<any>(25)
-
 
   return (
     <section className="text-gray-600 body-font overflow-hidden 2xl:flex 2xl:flex-col 2xl:justify-center ">
+
       <div className="container px-5 py-24 mx-auto">
+        <button onClick={goToProducts} className={`${montserrat.className} md:hidden text-lg underline mb-2`}>Go back</button>
         <div className=" mx-auto flex flex-wrap 2xl:flex 2xl:flex-wrap 2xl:justify-center  ">
-          <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/400x700" />
+          <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={product.image_url} />
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-            <h2 className="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
-            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">The Catcher in the Rye</h1>
+            <h2 className="text-sm title-font text-gray-500 tracking-widest">{product.brand.name}</h2>
+            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{product.name}</h1>
             <div className="flex mb-4">
               <span className="flex items-center">
                 <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
@@ -54,8 +62,7 @@ const ProductDetails = () => {
                 </a>
               </span>
             </div>
-            <p className="leading-relaxed">Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.</p>
-            {JSON.stringify(product)}
+            <p className="leading-relaxed">{product.description}</p>
             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
               <div className="flex ml-6 items-center">
                 <div className="relative">
@@ -72,7 +79,7 @@ const ProductDetails = () => {
               <span>XL</span>
             </div>
             <div className="flex mt-4">
-              <span className="title-font font-medium text-2xl text-gray-900">$58.00</span>
+              <span className="title-font font-medium text-2xl text-gray-900">${product.price}</span>
               <button className="btn btn-neutral flex ml-auto text-white  border-0 py-2 px-6 focus:outline-none hover:bg-[#EAC7C7] rounded">Buy</button>
               <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                 <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
