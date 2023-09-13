@@ -1,9 +1,8 @@
 "use client"
-import { ProductService } from "@/service/ProductService"
 import { Bebas_Neue } from "next/font/google"
 import { useEffect, useState } from "react"
 import { useHeaderStore } from "@/store/useHeader"
-
+import Link from 'next/link'
 
 const bebas_neue = Bebas_Neue({
   weight: "400",
@@ -48,7 +47,7 @@ export const NavBar = () => {
               </div>
             </label>
             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-              <li><a>Settings</a></li>
+              <li><Link href="/productmanager">Admin panel</Link></li>
               <li><a>Logout</a></li>
             </ul>
           </div>

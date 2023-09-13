@@ -1,15 +1,22 @@
 "use client"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { createModule } from "./createModule"
 import { editModule } from "./editModule"
 import { discardModule } from "./discardModule"
 import { getModule } from "./getModule"
 
+import { Product } from "@/types/product"
+import { ProductService } from "@/service/ProductService"
 
 const productmanager = () => {
 
+  const [products, setProducts] = useState<Product[]>([])
 
   const [displayModule, setModule] = useState(createModule)
+  useEffect(() => {
+    ProductService.getProducts().then(data => setProducts(data))
+  }, [])
+
 
 
   return (
@@ -29,7 +36,7 @@ const productmanager = () => {
             <img className="w-8 h-8 mr-2" src="/edit.svg" alt="editIcon" />
             EDIT
           </a>
-          <a onClick={() => setModule(getModule)} className="sm:px-6 py-3 w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium inline-flex items-center leading-none border-gray-200 hover:text-gray-900 tracking-wider">
+          <a onClick={() => setModule(getModule(products))} className="sm:px-6 py-3 w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium inline-flex items-center leading-none border-gray-200 hover:text-gray-900 tracking-wider">
 
             <img className="w-10 h-10 mr-2" src="/get.svg" alt="getIcon" />
             GET
