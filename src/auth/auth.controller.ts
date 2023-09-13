@@ -13,12 +13,6 @@ export class AuthController {
 
 
     res
-      .cookie('access_token', user.access_token, {
-        httpOnly: true,
-        raw: true,
-        maxAge: 1800
-
-      })
       .send({
         message: "Signin Successfull",
         access_token: user.access_token
