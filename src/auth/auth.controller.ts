@@ -21,7 +21,10 @@ export class AuthController {
         maxAge: 1800
 
       })
-      .send({ message: "Signin Successfull" })
+      .send({
+        message: "Signin Successfull",
+        access_token: user.access_token
+      })
 
   }
 }
