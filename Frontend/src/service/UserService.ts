@@ -1,5 +1,4 @@
 
-
 const BASE_URL = 'https://itcrowdgzbackend.onrender.com'
 
 export const UserService = {
