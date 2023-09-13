@@ -1,6 +1,6 @@
 import { Product, baseProduct } from "@/types/product"
 
-const BASE_URL = 'http://localhost:3004'
+const BASE_URL = 'https://itcrowdgzbackend.onrender.com'
 
 export const ProductService = {
 
