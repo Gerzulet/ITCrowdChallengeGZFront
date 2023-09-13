@@ -2,6 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaClientUnknownRequestError } from '@prisma/client/runtime/library';
+import { Prisma } from '@prisma/client';
+import { NotFoundException } from '@nestjs/common';
 
 @Injectable()
 export class ProductsService {
@@ -59,11 +62,19 @@ export class ProductsService {
     })
   }
 
-  remove(id: string) {
-    return this.prisma.product.delete({
-      where: {
-        id: id,
-      },
-    })
+  async remove(id: string) {
+    try {
+      await this.prisma.product.delete({
+        where: {
+          id: id,
+        },
+      })
+    } catch (error) {
+      if (error.code === 'P2025') {
+        throw new NotFoundException('Product not found')
+
+      }
+    }
+
   }
 }
