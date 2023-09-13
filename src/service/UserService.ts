@@ -7,7 +7,6 @@ export const UserService = {
     return await fetch(`${BASE_URL}/auth/login`, {
       method: "POST",
       body: JSON.stringify(data),
-      credentials: 'include',
       headers: {
         "Content-Type": "application/json",
       },
