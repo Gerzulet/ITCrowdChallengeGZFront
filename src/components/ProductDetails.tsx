@@ -13,7 +13,7 @@ const montserrat = Montserrat({
 
 const ProductDetails = () => {
   const { product } = useProductDetailStore()
-  const [rangeValue, setRangeValue] = useState<number>(25)
+  const [rangeValue, setRangeValue] = useState<any>(25)
 
   return (
     <section className="text-gray-600 body-font overflow-hidden 2xl:flex 2xl:flex-col 2xl:justify-center ">
