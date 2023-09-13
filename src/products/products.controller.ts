@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Res, Param, Delete, Query, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Res, Param, Delete, Query, UseGuards, HttpCode, HttpStatus } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
@@ -9,29 +9,34 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) { }
 
   @UseGuards(AuthGuard)
+  @HttpCode(HttpStatus.OK)
   @Post()
-  create(@Body() createProductDto: CreateProductDto) {
-    return this.productsService.create(createProductDto);
+  async create(@Body() createProductDto: CreateProductDto, @Res() res: any) {
+    res.send(await this.productsService.create(createProductDto))
   }
 
+  @HttpCode(HttpStatus.OK)
   @Get()
-  findAll() {
-    return this.productsService.findAll();
+  async findAll() {
+    return await this.productsService.findAll();
   }
 
+  @HttpCode(HttpStatus.OK)
   @Get('search')
-  findOne(@Query() filter: { name: string, description: string }) {
-    return this.productsService.findOne(filter);
+  async findOne(@Query() filter: { name: string, description: string }) {
+    return await this.productsService.findOne(filter);
   }
 
-  // @UseGuards(AuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @UseGuards(AuthGuard)
   @Patch(':id')
   async update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
     return await this.productsService.update(id, updateProductDto);
   }
 
 
-  // @UseGuards(AuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @UseGuards(AuthGuard)
   @Delete(':id')
   async remove(@Param('id') id: string, @Res() res: any) {
     res.send(await this.productsService.remove(id))

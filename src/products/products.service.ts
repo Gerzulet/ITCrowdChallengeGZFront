@@ -11,29 +11,40 @@ export class ProductsService {
   constructor(private prisma: PrismaService) { }
 
 
-  create(createProductDto: CreateProductDto) {
+  async create(createProductDto: CreateProductDto) {
 
-    return this.prisma.product.create({
-      data: {
-        name: createProductDto.name,
-        description: createProductDto.description,
-        image_url: createProductDto.image_url,
-        price: createProductDto.price,
-        brandId: createProductDto.brandId
+    try {
+      await this.prisma.product.create({
+        data: {
+          name: createProductDto.name,
+          description: createProductDto.description,
+          image_url: createProductDto.image_url,
+          price: createProductDto.price,
+          brandId: createProductDto.brandId
+        }
+      })
+      return { message: "Product Created" }
+    } catch (error) {
+      if (error instanceof PrismaClientValidationError) {
+        throw new NotAcceptableException('Product property not allowed')
       }
-    })
+      if (error.code === 'P2002') {
+        throw new NotAcceptableException('Product already exists')
+      }
+
+    }
   }
 
-  findAll() {
-    return this.prisma.product.findMany({
+  async findAll() {
+    return await this.prisma.product.findMany({
       include: {
         brand: true
       }
     })
   }
 
-  findOne(filter: { name: string, description: string }) {
-    return this.prisma.product.findMany({
+  async findOne(filter: { name: string, description: string }) {
+    return await this.prisma.product.findMany({
       where: {
         OR: [
           {
@@ -52,7 +63,6 @@ export class ProductsService {
   }
 
   async update(id: string, updateProductDto: UpdateProductDto) {
-
     try {
       await this.prisma.product.update({
         where: {
