@@ -9,7 +9,6 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post('login')
   async signIn(@Body() signInDto: userDto, @Res() res: any) {
-    console.log(signInDto)
     const user = await this.authService.signIn(signInDto.username, signInDto.password);
 
 
