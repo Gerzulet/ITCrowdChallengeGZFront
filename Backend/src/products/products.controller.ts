@@ -19,6 +19,7 @@ export class ProductsController {
     return this.productsService.findAll();
   }
 
+  @UseGuards(AuthGuard)
   @Get('search')
   findOne(@Query() filter: { name: string, description: string }) {
     return this.productsService.findOne(filter);
