@@ -8,7 +8,7 @@ export class AuthController {
 
   @HttpCode(HttpStatus.OK)
   @Post('login')
-  async signIn(@Body() signInDto: userDto, @Res() res: any) {
+  async signIn(@Body() signInDto: userDto, @Res({ passthrough: true }) res: any) {
     const user = await this.authService.signIn(signInDto.username, signInDto.password);
 
 
