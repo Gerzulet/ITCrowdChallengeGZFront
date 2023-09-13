@@ -1,6 +1,5 @@
 
 
-
 const BASE_URL = 'https://itcrowdgzbackend.onrender.com'
 
 export const UserService = {
@@ -12,7 +11,10 @@ export const UserService = {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then(res => res.json())
+    }).then(res => {
+      console.log(res)
+      res.json()
+    })
   },
 
 
