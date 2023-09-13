@@ -4,6 +4,7 @@ import { goToDetails } from "@/utils/navigation"
 import { useEffect, useState } from "react"
 import { ProductService } from "@/service/ProductService"
 import { Product } from "@/types/product"
+import { useProductDetailStore } from "@/store/useProductDetail"
 
 
 const bebas_neue = Bebas_Neue({
@@ -17,6 +18,8 @@ const Products = () => {
 
   const [products, setProducts] = useState<Product[]>([])
   const [page, setPage] = useState(1);
+  const { product, setProduct } = useProductDetailStore()
+
 
 
   function paginateElements(elements: Product[], page: number, elementsPerPage: number) {
@@ -43,6 +46,12 @@ const Products = () => {
 
     setPage(button.textContent);
   };
+
+  function getDetails(product: Product) {
+    setProduct(product)
+    goToDetails()
+
+  }
   return (
 
 
@@ -65,7 +74,7 @@ const Products = () => {
           listOfProducts?.map((product, index) => (
             <div key={index} className="transform p-4 hover:scale-110 transition-transform ease-in-out duration-300 col-span-3 md:col-span-1">
               <img
-                onClick={goToDetails}
+                onClick={() => getDetails(product)}
                 className="h-auto rounded-lg hover:cursor-pointer"
                 src={product.image_url}
                 alt={product.name}

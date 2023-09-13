@@ -13,7 +13,7 @@ const Main = () => {
         <a href="#details" id="goToDetails" className="invisible"></a>
 
         <div id="main" className="carousel-item w-full md:w-1/2">
-          <div className=" overflow-y-hidden md:ml-0 flex flex-col justify-center items-center">
+          <div className=" overflow-y-hidden mt-20  md:mt-0md:ml-0 flex flex-col items-center">
             <Hero />
             <LoginForm />
           </div>

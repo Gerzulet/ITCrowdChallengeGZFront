@@ -23,7 +23,7 @@ const Hero = () => {
 
 
   return (
-    <div className="hero   md:mt-2 md:h-[24rem] 2xl:h-[38rem]">
+    <div className="hero    md:mt-2 md:h-[24rem] 2xl:h-[38rem]">
       <div className="md:ml-4 hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <h1 className={`${bebas_neue.className} text-5xl  md:text-[6rem] 2xl:text-[12rem]  font-bold `}>Let us <span className="text-[#EAC7C7] font-semibold"> guide</span> you</h1>
