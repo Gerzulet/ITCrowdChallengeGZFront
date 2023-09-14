@@ -2,7 +2,7 @@
 import { Bebas_Neue, Montserrat } from "next/font/google"
 import { UserService } from "@/service/UserService"
 import { useState } from "react"
-
+import { useRouter } from "next/navigation"
 
 const montserrat = Montserrat({
   weight: "400",
@@ -17,18 +17,22 @@ const bebas_neue = Bebas_Neue({
 }
 )
 
-
-
 export const LoginForm = () => {
   const [username, setUsername] = useState<String>('');
   const [password, setPassword] = useState<String>('');
+  const [loading, setLoading] = useState<String>('LOGIN')
+  const router = useRouter()
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
-    await UserService.login({ username, password }).then(data => console.log(data))
-
+    await UserService.login({ username, password }).then(data => {
+      if (data.statusCode === 200 || data.message === 'Signin Successfull') {
+        setLoading('HOLD ON THERE...')
+        sessionStorage.setItem('access_token', data.access_token)
+        router.push('productmanager')
+      }
+    })
   };
-
 
   return (
     <div className="">
@@ -50,7 +54,7 @@ export const LoginForm = () => {
           </label>
         </div>
         <div className="form-control mt-6">
-          <button onClick={handleLogin} className="btn btn-primary 2xl:text-xl">Login</button>
+          <button onClick={(e) => handleLogin(e)} className="btn btn-primary 2xl:text-xl">{loading}</button>
         </div>
       </div>
     </div>

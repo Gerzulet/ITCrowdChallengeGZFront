@@ -8,20 +8,15 @@ export class AuthController {
 
   @HttpCode(HttpStatus.OK)
   @Post('login')
-  async signIn(@Body() signInDto: userDto, @Res() res: any) {
+  async signIn(@Body() signInDto: userDto, @Res({ passthrough: true }) res: any) {
     const user = await this.authService.signIn(signInDto.username, signInDto.password);
 
 
     res
-      .cookie('access_token', user.access_token, {
-        httpOnly: true,
-        samesite: "none",
-        raw: true,
-        secure: true,
-        maxAge: 1800
-
+      .send({
+        message: "Signin Successfull",
+        access_token: user.access_token
       })
-      .send({ message: "Signin Successfull" })
 
   }
 }

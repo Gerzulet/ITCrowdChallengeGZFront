@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Res, Param, Delete, Query, UseGuards, HttpCode, HttpStatus } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
@@ -9,32 +9,39 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) { }
 
   @UseGuards(AuthGuard)
+  @HttpCode(HttpStatus.OK)
   @Post()
-  create(@Body() createProductDto: CreateProductDto) {
-    return this.productsService.create(createProductDto);
+  async create(@Body() createProductDto: CreateProductDto, @Res() res: any) {
+    await this.productsService.create(createProductDto)
+    res.send({ message: "Product Created" })
   }
 
+  @HttpCode(HttpStatus.OK)
   @Get()
-  findAll() {
-    return this.productsService.findAll();
+  async findAll() {
+    return await this.productsService.findAll();
   }
 
-  @UseGuards(AuthGuard)
+  @HttpCode(HttpStatus.OK)
   @Get('search')
-  findOne(@Query() filter: { name: string, description: string }) {
-    return this.productsService.findOne(filter);
+  async findOne(@Query() filter: { name: string, description: string }) {
+    return await this.productsService.findOne(filter);
   }
 
+  @HttpCode(HttpStatus.OK)
   @UseGuards(AuthGuard)
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
-    return this.productsService.update(id, updateProductDto);
+  async update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto, @Res() res: any) {
+    await this.productsService.update(id, updateProductDto);
+    res.send({ message: "Product has been modified" })
   }
 
 
+  @HttpCode(HttpStatus.OK)
   @UseGuards(AuthGuard)
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.productsService.remove(id);
+  async remove(@Param('id') id: string, @Res() res: any) {
+    await this.productsService.remove(id)
+    res.send({ message: "Product deleted" })
   }
 }

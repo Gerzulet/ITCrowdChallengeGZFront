@@ -20,30 +20,25 @@ const Products = () => {
   const [page, setPage] = useState(1);
   const { product, setProduct } = useProductDetailStore()
 
-
-
   function paginateElements(elements: Product[], page: number, elementsPerPage: number) {
     const start = (page - 1) * elementsPerPage;
     const end = start + elementsPerPage;
+    if (!elements) return null
     return elements.slice(start, end);
   }
-
   const listOfProducts = paginateElements(products, page, 9)
 
   useEffect(() => {
     ProductService.getProducts().then(data => setProducts(data))
-  })
+  }, [])
 
   const handleClick = (e: any) => {
     const button = e.target;
     const activeClass = "btn-active";
-
     button.parentElement.querySelectorAll(".btn").forEach((btn: any) => {
       btn.classList.remove(activeClass);
     });
-
     button.classList.add(activeClass);
-
     setPage(button.textContent);
   };
 
@@ -53,7 +48,6 @@ const Products = () => {
 
   }
   return (
-
 
     <div id="item1" className=" text-[24rem] overflow-y-auto 2xl:h-screen 2xl:m-0 h-[50rem] md:w-[58rem] ml-18 md:ml-0 mt-10 md:mt-2">
       <div className="w-full  flex flex-col z-30 items-center justify-center">
@@ -65,9 +59,7 @@ const Products = () => {
           <button onClick={handleClick} className="join-item btn ">2</button>
           <button onClick={handleClick} className="join-item btn ">3</button>
           <button onClick={handleClick} className="join-item btn ">4</button>
-
         </div>
-
       </div>
       <div className="grid md:grid-cols-3 mt-4 gap-2">
         {
@@ -80,12 +72,9 @@ const Products = () => {
                 alt={product.name}
               />
             </div>
-
           ))}
-
       </div>
     </div>
-
 
   )
 }

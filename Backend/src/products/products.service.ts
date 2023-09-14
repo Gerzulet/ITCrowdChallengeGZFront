@@ -1,36 +1,49 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotAcceptableException } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaClientValidationError } from '@prisma/client/runtime/library';
+import { NotFoundException } from '@nestjs/common';
 
 @Injectable()
 export class ProductsService {
   constructor(private prisma: PrismaService) { }
 
 
-  create(createProductDto: CreateProductDto) {
+  async create(createProductDto: CreateProductDto) {
 
-    return this.prisma.product.create({
-      data: {
-        name: createProductDto.name,
-        description: createProductDto.description,
-        image_url: createProductDto.image_url,
-        price: createProductDto.price,
-        brandId: createProductDto.brandId
+    try {
+      await this.prisma.product.create({
+        data: {
+          name: createProductDto.name,
+          description: createProductDto.description,
+          image_url: createProductDto.image_url,
+          price: createProductDto.price,
+          brandId: createProductDto.brandId
+        }
+      })
+      return { message: "Product Created" }
+    } catch (error) {
+      if (error instanceof PrismaClientValidationError) {
+        throw new NotAcceptableException('Product property not allowed')
       }
-    })
+      if (error.code === 'P2002') {
+        throw new NotAcceptableException('Product already exists')
+      }
+
+    }
   }
 
-  findAll() {
-    return this.prisma.product.findMany({
+  async findAll() {
+    return await this.prisma.product.findMany({
       include: {
         brand: true
       }
     })
   }
 
-  findOne(filter: { name: string, description: string }) {
-    return this.prisma.product.findMany({
+  async findOne(filter: { name: string, description: string }) {
+    return await this.prisma.product.findMany({
       where: {
         OR: [
           {
@@ -48,22 +61,42 @@ export class ProductsService {
     })
   }
 
-  update(id: string, updateProductDto: UpdateProductDto) {
-    return this.prisma.product.update({
-      where: {
-        id: id,
-      },
-      data: {
-        ...updateProductDto,
+  async update(id: string, updateProductDto: UpdateProductDto) {
+    try {
+      await this.prisma.product.update({
+        where: {
+          id: id,
+        },
+        data: {
+          ...updateProductDto,
+        }
+      })
+    } catch (error) {
+      if (error.code === 'P2025') {
+        throw new NotFoundException('Product not found')
+      } else if (error instanceof PrismaClientValidationError) {
+        throw new NotAcceptableException('Product property not allowed')
       }
-    })
+    }
+
   }
 
-  remove(id: string) {
-    return this.prisma.product.delete({
-      where: {
-        id: id,
-      },
-    })
+
+
+
+  async remove(id: string) {
+    try {
+      await this.prisma.product.delete({
+        where: {
+          id: id,
+        },
+      })
+    } catch (error) {
+      if (error.code === 'P2025') {
+        throw new NotFoundException('Product not found')
+
+      }
+    }
+
   }
 }
