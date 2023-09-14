@@ -1,73 +1,62 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+## ItCrowd Challenge
+## Desafio para ItCrowd
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Hola! Me llamo German Soto, soy desarrollador fullstack y he decidido encarar este proyecto por ITCrowd. 
+Hi! My name is German Soto, i am a fullstack developer, and i have chosen to make this project by ITCrowd.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+La aplicacion web es de frente un e-commerce, reducido en funcionalidades, con un diseño que te permite manejarte de manera horizontal por el contenido de la pagina. 
 
-## Description
+Para el backend:
+Usa Nestjs como base, y se apoya con librerias como: 
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+    - Prisma: ORM para manejo de base de datos, en este caso con postgresql, mediante la plataforma ElephantSQL.
+    - Bcrypt: Para encriptado y autenticacion de usuarios y contraseñas.
+    - Fakerjs: Para informacion de mentira para creacion de objetos.
 
-## Installation
+The web application is up front an e-commerce, reduced in functionalities, with a design that allows you to traverse it horizontally. 
+It uses Nestjs at its base, and it uses libraries like:
 
-```bash
-$ npm install
-```
 
-## Running the app
 
-```bash
-# development
-$ npm run start
+    - Prisma: Object-relational mapper (ORM) for managing databases, in this case PostgreSQL, using the ElephantSQL platform.
+    - Bcrypt: For encrypting and authenticating user names and passwords.
+    - Faker.js: For generating fake data for creating objects.
 
-# watch mode
-$ npm run start:dev
 
-# production mode
-$ npm run start:prod
-```
 
-## Test
 
-```bash
-# unit tests
-$ npm run test
+Para hacer correr la aplicacion puedes descargar el repositorio, instalar y correr el proyecto con comandos como npm run start:dev
+Necesitaras un archivo .env para pasarle la informacion de conexion a la base de datos de ElephantSQL
 
-# e2e tests
-$ npm run test:e2e
 
-# test coverage
-$ npm run test:cov
-```
 
-## Support
+To run the application, you can download the repository, install and run the project with commands like npm run start:dev.
+You will need an .env file to pass the connection information to the ElephantSQL database.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
+# Endpoints 
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+'/products': 
 
-## License
+GET: Get all products / Obten todos los productos
+GET: (/search/query) Get product by name or description / Obten productos por nombre o por descripcion 
+POST (data) Create new product / Crea un nuevo producto (Requires authorization header)
+PATCH (:id, data): Modify existin product / Modifica producto existente (Requires authorization header)
+DELETE (:id): Delete product / Elimina producto (Requires authorization header)
 
-Nest is [MIT licensed](LICENSE).
+
+'/brands': 
+
+GET: Get all brands / Obten todas las marcas
+
+'/auth/login': 
+
+POST (data): Login process / Proceso de login
+
+
+## Deploy 
+
+https://itcrowdgzbackend.onrender.com
+
+
+   
