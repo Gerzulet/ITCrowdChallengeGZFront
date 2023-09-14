@@ -28,11 +28,13 @@ export const LoginForm = () => {
 
 
   const router = useRouter()
+
+
   const handleLogin = async (e: any) => {
     e.preventDefault();
     await UserService.login({ username, password }).then(data => {
-      setResponse(data.message)
       console.log(data)
+      setResponse(data.message)
       if (data.statusCode === 200 || data.message === 'Signin Successfull') {
         sessionStorage.setItem('access_token', data.access_token)
         router.push('productmanager')

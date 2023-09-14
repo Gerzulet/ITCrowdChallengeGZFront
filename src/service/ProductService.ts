@@ -26,9 +26,13 @@ export const ProductService = {
     }).then(res => res.json())
   },
 
-  editProduct: async (pid: string, data: Object): Promise<any> => {
+  editProduct: async (pid: string, data: Object, header: string): Promise<any> => {
     return await fetch(`${BASE_URL}/products/${pid}`, {
       method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        'authorization': header
+      },
       body: JSON.stringify(data)
     }).then(res => res.json())
   },
