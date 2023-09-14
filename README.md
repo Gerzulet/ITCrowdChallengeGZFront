@@ -1,33 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Desafio para ItCrowd
 
-## Getting Started
-First, run the development server:
+Hola! Me llamo German Soto, soy desarrollador fullstack y he decidido encarar este proyecto. 
+Hi! My name is German Soto, i am a fullstack developer, and i have chosen to make this project.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+La aplicacion web es de frente un e-commerce, reducido en funcionalidades, con un diseño que te permite manejarte de manera horizontal por el contenido de la pagina. 
+Usa Nextjs como base, y se apoya con librerias como: 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    - DaisyUI: Para mantener consistencia en cuanto a estilos
+    - Zustand: Para manejo de estado globales, en particular para tener los detalles de los productos 
+    - TailwindCSS: Framework de CSS como base de proyecto. 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The web application is up front an e-commerce, reduced in functionalities, with a design that allows you to traverse it horizontally. 
+It uses Nextjs at its base, and it uses libraries like: 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+    - DaisyUI: To maintain consistency in the style.
+    - Zustand: To manage global states, in particular, used to see details of products.
+    - TailwindCSS: CSS framework used as base for the proyect.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+No hay mucho que decir en cuanto a correr la aplicacion, basta con descargar el repositorio, instalar las dependencias y correr con el script ```npm run dev```
+There is not much to say about running the app, just download the repository, install its dependencies and run the project with the ```npm run dev ``` command. 
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   
+
