@@ -24,6 +24,10 @@ No hay mucho que decir en cuanto a correr la aplicacion, basta con descargar el 
 There is not much to say about running the app, just download the repository, install its dependencies and run the project with the ```npm run dev ``` command. 
 
 
+# Deploy 
+
+https://it-crowd-challenge-gz-front.vercel.app/
+
 
    
 
