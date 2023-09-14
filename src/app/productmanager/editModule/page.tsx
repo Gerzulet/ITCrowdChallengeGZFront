@@ -3,6 +3,7 @@ import { ProductService } from "@/service/ProductService"
 import { BrandsService } from "@/service/BrandService"
 import { Brand, Product } from "@/types/product"
 import { useEffect, useState } from "react"
+import Link from "next/link"
 export default function editModule() {
 
 
@@ -45,6 +46,7 @@ export default function editModule() {
 
   return (
     <div className="overflow-x-auto overflow-y-scroll">
+      <Link className="ml-2 font-bold cursor-pointer underline" href="/productmanager">Go back</Link>
       <table className="table">
         <thead>
           <tr>
@@ -60,7 +62,6 @@ export default function editModule() {
             <tr key={index}>
               <td>
                 <button onClick={() => (document.getElementById(`my_modal_${index}`) as HTMLFormElement).showModal()} className="rounded-full">
-
                   <img className="h-6 w-6" src="/edit.svg" alt="edit" />
                 </button>
               </td>
@@ -71,7 +72,6 @@ export default function editModule() {
                     <img className="h-4 w-4" src="/edit.svg" alt="edit" />
                   </button>
                 </div>
-
               </td>
               <td>{product.description}</td>
               <th>
@@ -105,9 +105,6 @@ export default function editModule() {
                     </select>
                     <button onClick={(e) => handleEdit(e, product.id)} className="btn btn-primary">Modify</button>
                     {message}
-
-
-
                   </form>
                   <div className="modal-action">
                     <form method="dialog">

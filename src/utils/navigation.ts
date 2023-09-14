@@ -1,6 +1,6 @@
 
 export async function goHome() {
-  document.getElementById("goToHome")?.click()
+  document.getElementById("goToMain")?.click()
 }
 export function goToDetails() {
   document.getElementById("goToDetails")?.click()

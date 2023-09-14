@@ -5,8 +5,7 @@ export default function Home() {
   return (
 
     <>
-      <div className=" overflow-x-scroll">
-
+      <div className="overflow-x-scroll">
         <Main />
       </div>
     </>

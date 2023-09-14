@@ -1,5 +1,5 @@
 
-const BASE_URL = 'http://www.localhost:3004'
+const BASE_URL = 'https://itcrowdgzbackend.onrender.com'
 
 export const BrandsService = {
 

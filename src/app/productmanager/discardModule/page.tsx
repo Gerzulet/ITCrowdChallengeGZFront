@@ -3,8 +3,8 @@ import { ProductService } from "@/service/ProductService"
 import { Product } from "@/types/product"
 import { useEffect, useState } from "react"
 import Link from "next/link"
-export default function discardModule() {
 
+export default function discardModule() {
 
   const [header, setHeader] = useState<any>('')
   const [products, setProducts] = useState<Product[]>([])
@@ -14,14 +14,12 @@ export default function discardModule() {
     setHeader(sessionStorage.getItem('access_token'))
   }, [])
 
-
   function discard(id: string) {
     ProductService.deleteProduct(id, header).then((data) => {
       ProductService.getProducts().then(data => setProducts(data))
     }
     )
   }
-
 
   return (
     <div className="overflow-x-auto overflow-y-scroll">
@@ -55,8 +53,6 @@ export default function discardModule() {
                   }} className="md:hidden rounded-full">
                     <img className="h-8 w-10 mt-4" src="/trash.png" alt="trash" />
                   </button>
-
-
                 </div>
               </td>
               <td>{product.description}</td>
