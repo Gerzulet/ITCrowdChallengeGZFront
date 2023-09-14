@@ -2,8 +2,7 @@ import { Injectable, NotAcceptableException } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { PrismaClientUnknownRequestError, PrismaClientValidationError } from '@prisma/client/runtime/library';
-import { Prisma } from '@prisma/client';
+import { PrismaClientValidationError } from '@prisma/client/runtime/library';
 import { NotFoundException } from '@nestjs/common';
 
 @Injectable()
@@ -81,6 +80,9 @@ export class ProductsService {
     }
 
   }
+
+
+
 
   async remove(id: string) {
     try {

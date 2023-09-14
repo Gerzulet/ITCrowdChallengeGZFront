@@ -16,7 +16,6 @@ export class AuthGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request = context.switchToHttp().getRequest();
     const token = this.extractTokenFromHeader(request);
-    console.log(token)
     if (!token) {
       throw new UnauthorizedException();
     }
@@ -39,17 +38,11 @@ export class AuthGuard implements CanActivate {
     const authHeader = request.headers['authorization'];
 
     if (authHeader) {
-      const parts = authHeader.split(' ');
-      if (parts.length === 2 && parts[0] === 'Bearer') {
-        console.log(parts[1])
-        return parts[1];
-      } else if (parts.length === 1) {
-        console.log(parts[0])
-        return parts[0];
-      }
+      return authHeader
     }
+    throw new UnauthorizedException("No header");
 
-    return undefined;
+
   }
 
 }

@@ -12,7 +12,8 @@ export class ProductsController {
   @HttpCode(HttpStatus.OK)
   @Post()
   async create(@Body() createProductDto: CreateProductDto, @Res() res: any) {
-    res.send(await this.productsService.create(createProductDto))
+    await this.productsService.create(createProductDto)
+    res.send({ message: "Product Created" })
   }
 
   @HttpCode(HttpStatus.OK)
@@ -30,8 +31,9 @@ export class ProductsController {
   @HttpCode(HttpStatus.OK)
   @UseGuards(AuthGuard)
   @Patch(':id')
-  async update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
-    return await this.productsService.update(id, updateProductDto);
+  async update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto, @Res() res: any) {
+    await this.productsService.update(id, updateProductDto);
+    res.send({ message: "Product has been modified" })
   }
 
 
@@ -39,6 +41,7 @@ export class ProductsController {
   @UseGuards(AuthGuard)
   @Delete(':id')
   async remove(@Param('id') id: string, @Res() res: any) {
-    res.send(await this.productsService.remove(id))
+    await this.productsService.remove(id)
+    res.send({ message: "Product deleted" })
   }
 }
