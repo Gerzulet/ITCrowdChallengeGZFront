@@ -75,10 +75,10 @@ POST (data) Create new product / Crea un nuevo producto (Requires authorization 
 PATCH (:id, data): Modify existin product / Modifica producto existente (Requires authorization header)   
 DELETE (:id): Delete product / Elimina producto (Requires authorization header)   
 
-To access as admin, login with this account, it will give you access to the admin panel located at the frontend: 
-Para acceder como administrador ingresa con esta cuenta, te dara los permisos necesariso para acceder al panel de administrador de productos desde el frontend.
-user: admintest
-password: admin1234 
+To access as admin, login with this account, it will give you access to the admin panel located at the frontend:   
+Para acceder como administrador ingresa con esta cuenta, te dara los permisos necesariso para acceder al panel de administrador de productos desde el frontend.  
+user: admintest  
+password: admin1234   
 
 
 '/brands': 
