@@ -2,12 +2,11 @@
 import { ProductService } from "@/service/ProductService"
 import { Product } from "@/types/product"
 import { useEffect, useState } from "react"
-import { useRouter } from "next/navigation"
+import Link from "next/link"
 export default function discardModule() {
 
 
   const [header, setHeader] = useState<any>('')
-  const router = useRouter()
   const [products, setProducts] = useState<Product[]>([])
 
   useEffect(() => {
@@ -24,11 +23,10 @@ export default function discardModule() {
   }
 
 
-
   return (
     <div className="overflow-x-auto overflow-y-scroll">
+      <Link className="ml-2 font-bold cursor-pointer underline" href="/productmanager">Go back</Link>
       <table className="table">
-        {/* head */}
         <thead>
           <tr>
             <th></th>
@@ -39,7 +37,6 @@ export default function discardModule() {
           </tr>
         </thead>
         <tbody>
-
           {products.map((product: Product, index: number) => (
             <tr key={index}>
               <td>
@@ -51,7 +48,16 @@ export default function discardModule() {
                 </button>
               </td>
               <td>
-                {product.name}
+                <div className="flex flex-col justify-center items-center">
+                  {product.name}
+                  <button onClick={() => {
+                    discard(product.id)
+                  }} className="md:hidden rounded-full">
+                    <img className="h-8 w-10 mt-4" src="/trash.png" alt="trash" />
+                  </button>
+
+
+                </div>
               </td>
               <td>{product.description}</td>
               <th>
@@ -61,22 +67,11 @@ export default function discardModule() {
                 {product.brand.name}
               </th>
             </tr>
-
           )
           )}
-          {/* row 1 */}
         </tbody>
 
       </table>
-      <dialog id="my_modal_2" className="modal">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">{}</p>
-        </div>
-        <form method="dialog" className="modal-backdrop">
-          <button>close</button>
-        </form>
-      </dialog>
     </div>
   )
 }
