@@ -2,9 +2,7 @@
 import { Bebas_Neue, Montserrat } from "next/font/google"
 import { UserService } from "@/service/UserService"
 import { useState } from "react"
-import { ProductService } from "@/service/ProductService"
-import { useHeaderStore } from "@/store/useHeader"
-
+import { useRouter } from "next/navigation"
 
 const montserrat = Montserrat({
   weight: "400",
@@ -26,10 +24,21 @@ const bebas_neue = Bebas_Neue({
 export const LoginForm = () => {
   const [username, setUsername] = useState<String>('');
   const [password, setPassword] = useState<String>('');
+  const [response, setResponse] = useState<String>('');
 
+
+  const router = useRouter()
   const handleLogin = async (e: any) => {
     e.preventDefault();
-    await UserService.login({ username, password }).then(data => useHeaderStore.setState(data.access_token))
+    await UserService.login({ username, password }).then(data => {
+      setResponse(data.message)
+      console.log(data)
+      if (data.statusCode === 200 || data.message === 'Signin Successfull') {
+        sessionStorage.setItem('access_token', data.access_token)
+        router.push('productmanager')
+      }
+    })
+
   };
 
 

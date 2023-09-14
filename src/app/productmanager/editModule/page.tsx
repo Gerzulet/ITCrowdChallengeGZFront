@@ -1,6 +1,6 @@
 "use client"
 
-export const editModule = () => {
+export default function editModule() {
   return (
 
     <div className="overflow-x-auto">

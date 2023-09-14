@@ -1,14 +1,30 @@
 "use client"
 import { Product } from "@/types/product"
+import { useState, useEffect } from "react"
+import { useListOfProductStore } from "@/store/useListProducts"
+import { ProductService } from "@/service/ProductService"
+import Link from "next/link"
+
+export default function getModule() {
+
+  const [header, setHeader] = useState<any>('')
+  const [products, setProducts] = useState<Product[]>([])
+  const { listOfProducts } = useListOfProductStore()
 
 
-export const getModule = (products: Product[]) => {
+  useEffect(() => {
+    ProductService.getProducts().then(data => setProducts(data))
+    const token = sessionStorage.getItem('access_token')
+    setHeader(token)
+  }, [])
+
 
 
 
 
   return (
     <div className="overflow-x-auto overflow-y-scroll">
+      <Link href="/productmanager">Go back</Link>
       <table className="table">
         {/* head */}
         <thead>

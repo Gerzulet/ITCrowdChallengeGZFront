@@ -13,7 +13,7 @@ interface Actions {
 
 // Initialize a default state
 const INITIAL_STATE: State = {
-  header: ''
+  header: 'noheader'
 }
 
 // Create the store with Zustand, combining the status interface and actions

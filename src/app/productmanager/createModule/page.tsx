@@ -1,6 +1,6 @@
 "use client"
 
-export const createModule = () => {
+export default function createModule() {
   return (
     <div className="flex flex-col justify-center items-center ">
 

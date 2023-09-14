@@ -73,7 +73,7 @@ const Products = () => {
       </div>
       <div className="grid md:grid-cols-3 mt-4 gap-2">
         {
-          listOfProducts.map((product, index) => (
+          listOfProducts?.map((product, index) => (
             <div key={index} className="transform p-4 hover:scale-110 transition-transform ease-in-out duration-300 col-span-3 md:col-span-1">
               <img
                 onClick={() => getDetails(product)}

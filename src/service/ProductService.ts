@@ -1,6 +1,6 @@
 import { Product, baseProduct } from "@/types/product"
 
-const BASE_URL = 'https://itcrowdgzbackend.onrender.com'
+const BASE_URL = 'http://www.localhost:3004'
 
 export const ProductService = {
 
@@ -19,14 +19,14 @@ export const ProductService = {
   },
 
 
-  createProduct: async (data: baseProduct): Promise<Object> => {
+  createProduct: async (data: baseProduct): Promise<any> => {
     return await fetch(`${BASE_URL}/goals`, {
       method: "POST",
       body: JSON.stringify(data)
     }).then(res => res.json())
   },
 
-  editProduct: async (pid: string, data: Object): Promise<Object> => {
+  editProduct: async (pid: string, data: Object): Promise<any> => {
     return await fetch(`${BASE_URL}/products/${pid}`, {
       method: "PATCH",
       body: JSON.stringify(data)
@@ -35,9 +35,12 @@ export const ProductService = {
 
 
 
-  deleteProduct: async (pid: string): Promise<Object> => {
+  deleteProduct: async (pid: string, header: string): Promise<any> => {
     return await fetch(`${BASE_URL}/products/${pid}`, {
       method: "DELETE",
+      headers: {
+        'authorization': header
+      }
     }).then(res => res.json())
   },
 

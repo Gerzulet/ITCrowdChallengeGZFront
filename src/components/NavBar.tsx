@@ -15,15 +15,14 @@ const bebas_neue = Bebas_Neue({
 
 export const NavBar = () => {
 
-  const { header, setHeader } = useHeaderStore()
+  const { header } = useHeaderStore()
   const [logged, setLogged] = useState(false)
 
   useEffect(() => {
     console.log(header)
-    if (header !== '') {
+    if (header !== '' || header !== undefined) {
       setLogged(true)
     }
-
   }, [header])
 
   function goHome() { // Get this files elsewhere in the future
